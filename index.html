@@ -10,22 +10,29 @@
 <body>
     <h1>Yeti Sports 1</h1>
     <!-- Контейнер для игры -->
-    <div id="flash-container" style="width: 800px; height: 600px;"></div>
+    <div id="flash-container" style="width: 800px; height: 600px;">
+        <!-- Автоматическая загрузка SWF -->
+        <object type="application/x-shockwave-flash" data="https://github.com/Niki-ia/Yeti_Game/blob/main/yetisports1free.swf" width="800" height="600">
+            <param name="movie" value="yetisports1free.swf" />
+        </object>
+    </div>
 
     <script>
         // Проверяем наличие Ruffle
         if (window.RufflePlayer) {
-            // Создаём экземпляр Ruffle
             const ruffle = window.RufflePlayer.newest();
+            ruffle.config = { autoplay: true };
+            const container = document.getElementById("flash-container");
+            const object = container.querySelector("object");
             const player = ruffle.createPlayer();
-            document.getElementById("flash-container").appendChild(player);
-
-            // Загружаем файл SWF
-            player.load({ url: "https://github.com/Niki-ia/Yeti_Game/blob/main/yetisports1free.swf" });
+            player.setAttribute("src", object.getAttribute("data"));
+            container.replaceChild(player, object);
         } else {
-            console.error("RufflePlayer не найден. Убедитесь, что скрипт подключён.");
+            console.error("RufflePlayer не найден. Проверьте подключение скрипта.");
         }
     </script>
 </body>
 </html>
+     
+
 
