@@ -1,0 +1,4 @@
+# Разрешить доступ к SWF-файлам с любых доменов
+<FilesMatch "\.swf$">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
