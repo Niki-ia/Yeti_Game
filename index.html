@@ -13,15 +13,19 @@
     <div id="flash-container" style="width: 800px; height: 600px;"></div>
 
     <script>
-        // Создаём экземпляр Ruffle
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        document.getElementById("flash-container").appendChild(player);
+        // Проверяем наличие Ruffle
+        if (window.RufflePlayer) {
+            // Создаём экземпляр Ruffle
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            document.getElementById("flash-container").appendChild(player);
 
-        // Загружаем SWF-файл
-        player.load({
-            url: "yetisports1free.swf"
-        });
+            // Загружаем файл SWF
+            player.load({ url: "yetisports1free.swf" });
+        } else {
+            console.error("RufflePlayer не найден. Убедитесь, что скрипт подключён.");
+        }
     </script>
 </body>
 </html>
+
