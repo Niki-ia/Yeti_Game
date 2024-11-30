@@ -9,7 +9,18 @@
 </head>
 <body>
     <h1>Yeti Sports 1</h1>
-    <!-- Вставка Flash-игры -->
-    <embed src="https://niki-ia.github.io/Yeti_Game/yetisports1free.swf" width="800" height="600">
+    <!-- Контейнер для игры -->
+    <div id="flash-container" style="width: 800px; height: 600px;"></div>
+
+    <script>
+        // Подключаем Ruffle к странице
+        window.RufflePlayer = window.RufflePlayer || {};
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        document.getElementById("flash-container").appendChild(player);
+
+        // Указываем файл SWF
+        player.load("yetisports1free.swf");
+    </script>
 </body>
 </html>
