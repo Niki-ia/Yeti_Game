@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yetisports 1</title>
-    <!-- Подключение Ruffle -->
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body>
     <h1>Yeti Sports 1</h1>
-    <!-- Контейнер для игры -->
     <div id="flash-container" style="width: 800px; height: 600px;"></div>
 
     <script>
-        // Проверяем наличие Ruffle
-        if (window.RufflePlayer) {
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            document.getElementById("flash-container").appendChild(player);
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.RufflePlayer) {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                document.getElementById("flash-container").appendChild(player);
 
-            // Загружаем файл SWF
-            player.load("https://github.com/Niki-ia/Yeti_Game/blob/main/yetisports1free.swf");
-        } else {
-            console.error("RufflePlayer не найден. Убедитесь, что скрипт подключён.");
-        }
+                // Передаём только корректный объект
+                player.load({
+                    url: "yetisports1free.swf"
+                });
+            } else {
+                console.error("RufflePlayer не найден.");
+            }
+        });
     </script>
 </body>
 </html>
-
 
