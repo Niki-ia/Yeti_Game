@@ -10,28 +10,23 @@
 <body>
     <h1>Yeti Sports 1</h1>
     <!-- Контейнер для игры -->
-    <div id="flash-container" style="width: 800px; height: 600px;">
-        <!-- Автоматическая загрузка SWF -->
-        <object type="application/x-shockwave-flash" data="yetisports1free.swf" width="800" height="600">
-            <param name="movie" value="yetisports1free.swf" />
-        </object>
-    </div>
+    <div id="flash-container" style="width: 800px; height: 600px;"></div>
 
     <script>
         // Проверяем наличие Ruffle
         if (window.RufflePlayer) {
             const ruffle = window.RufflePlayer.newest();
-            ruffle.config = { autoplay: true };
-            const container = document.getElementById("flash-container");
-            const object = container.querySelector("object");
             const player = ruffle.createPlayer();
-            player.setAttribute("src", object.getAttribute("data"));
-            container.replaceChild(player, object);
+            document.getElementById("flash-container").appendChild(player);
+
+            // Загружаем файл SWF
+            player.load("yetisports1free.swf");
         } else {
-            console.error("RufflePlayer не найден. Проверьте подключение скрипта.");
+            console.error("RufflePlayer не найден. Убедитесь, что скрипт подключён.");
         }
     </script>
 </body>
 </html>
+
 
 
